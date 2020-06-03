@@ -22,4 +22,10 @@ class SearchNutrientsViewController: UIViewController {
         self.performSegue(withIdentifier: "getNutrientData", sender: Any.self)
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier == "getNutrientData"){
+            let nutri = segue.destination as! NutrientsViewController
+            nutri.dishName = self.dishNameTextField.text
+        }
+    }
 }
