@@ -96,7 +96,7 @@ class SearchRecipeViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "goToRecipe"){
             let recipeVC = segue.destination as! RecipeTableViewController
-            recipeVC.ingredients = ingredients
+            recipeVC.ingredients = fetchedResultsController.fetchedObjects
         }
     }
 
@@ -106,7 +106,7 @@ extension SearchRecipeViewController: UITableViewDelegate, UITableViewDataSource
     func numberOfSections(in tableView: UITableView) -> Int {
         return fetchedResultsController.sections?.count ?? 1
     }
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return fetchedResultsController.sections?[section].numberOfObjects ?? 0
     }
