@@ -1,5 +1,5 @@
 //
-//  SearchRecipeViewController.swift
+//  SearchNutrientsViewController.swift
 //  WTFD
 //
 //  Created by Garima Bothra on 03/06/20.
@@ -7,20 +7,25 @@
 //
 
 import UIKit
+import Moya
+import SwiftyJSON
 
-class SearchRecipeViewController: UIViewController {
+class SearchNutrientsViewController: UIViewController {
 
-    var ingredients = ["apple","baking soda", "nirma"]
+    var ingredientsWithQuantities = ["3 apples"]
 
-    @IBOutlet weak var ingredientsTableView: UITableView!
+    @IBOutlet weak var ingredientWithQuantity: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
     }
 
+    @IBAction func addButtonPressed(_ sender: Any) {
+        presentNewIngredientAlert()
+    }
+
     func presentNewIngredientAlert() {
-        let alert = UIAlertController(title: "New Ingredient", message: "Enter a name for this ingredient", preferredStyle: .alert)
+        let alert = UIAlertController(title: "New Ingredient", message: "Enter a name and quantity for this ingredient", preferredStyle: .alert)
 
         // Create actions
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
@@ -49,26 +54,21 @@ class SearchRecipeViewController: UIViewController {
     }
 
     func addIngredient(name: String) {
-        ingredients.append(name)
-        ingredientsTableView.reloadData()
+        ingredientsWithQuantities.append(name)
+        ingredientWithQuantity.reloadData()
     }
-
-    @IBAction func addButtonPressed(_ sender: Any) {
-        presentNewIngredientAlert()
-    }
-
 }
 
-extension SearchRecipeViewController: UITableViewDelegate, UITableViewDataSource {
+extension SearchNutrientsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return ingredients.count
+        return ingredientsWithQuantities.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
          //let ingredient = fetchedResultsController.object(at: indexPath)
-               let cell = tableView.dequeueReusableCell(withIdentifier: "IngredientCell", for: indexPath) as! IngredientTableViewCell
+               let cell = tableView.dequeueReusableCell(withIdentifier: "IngredientQuantityCell", for: indexPath) as! IngredientTableViewCell
                // Configure cell
-        cell.ingredientLabel.text = ingredients[indexPath.row]
+        cell.ingredientLabel.text = ingredientsWithQuantities[indexPath.row]
                return cell
     }
 }
