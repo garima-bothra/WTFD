@@ -12,7 +12,7 @@ import Moya
 enum SpoonacularAPI {
 
     case findRecipesByIngredients(ingredients: [String])
-    case getNutritionInformation(ingredient: String)
+    case getNutritionInformation(dishName: String)
     case getRecipeInformation(id:Int)
 }
 
@@ -49,8 +49,8 @@ extension SpoonacularAPI: TargetType {
                     "ingredients": ((ingredients.map({ $0 })).joined(separator: ",+")),
                     "apiKey": Spoonacular.apiKey
                 ], encoding: URLEncoding.default)
-        case .getNutritionInformation(let ingredient):
-            return.requestParameters(parameters: ["apiKey": Spoonacular.apiKey, "title": ingredient], encoding: URLEncoding.default)
+        case .getNutritionInformation(let dishName):
+            return.requestParameters(parameters: ["apiKey": Spoonacular.apiKey, "title": dishName], encoding: URLEncoding.default)
         default:
             return .requestParameters(parameters: [ "apiKey": Spoonacular.apiKey ], encoding: URLEncoding.default)
         }

@@ -23,6 +23,7 @@
 		86BE952D2487800B000C7D82 /* RecipeStepsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BE952C2487800B000C7D82 /* RecipeStepsTableViewCell.swift */; };
 		86BE953124878088000C7D82 /* RecipeStepsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BE953024878088000C7D82 /* RecipeStepsTableViewController.swift */; };
 		86BE953324878A48000C7D82 /* Step.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BE953224878A48000C7D82 /* Step.swift */; };
+		86BE9537248812D1000C7D82 /* NutrientsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BE9536248812D1000C7D82 /* NutrientsViewController.swift */; };
 		AB739F33E67BB9B06D3E19B1 /* Pods_WTFD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DBDF72A97AF266599FE3799 /* Pods_WTFD.framework */; };
 /* End PBXBuildFile section */
 
@@ -46,6 +47,7 @@
 		86BE952C2487800B000C7D82 /* RecipeStepsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeStepsTableViewCell.swift; sourceTree = "<group>"; };
 		86BE953024878088000C7D82 /* RecipeStepsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeStepsTableViewController.swift; sourceTree = "<group>"; };
 		86BE953224878A48000C7D82 /* Step.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step.swift; sourceTree = "<group>"; };
+		86BE9536248812D1000C7D82 /* NutrientsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutrientsViewController.swift; sourceTree = "<group>"; };
 		AFB18C19E543155EA3A5DD4A /* Pods-WTFD.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WTFD.release.xcconfig"; path = "Target Support Files/Pods-WTFD/Pods-WTFD.release.xcconfig"; sourceTree = "<group>"; };
 		F02E37A87313E316A2264C92 /* Pods-WTFD.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WTFD.debug.xcconfig"; path = "Target Support Files/Pods-WTFD/Pods-WTFD.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -139,6 +141,7 @@
 				86BE9514248739A4000C7D82 /* SearchRecipeViewController.swift */,
 				86BE952A24877136000C7D82 /* RecipeTableViewController.swift */,
 				86BE9516248739B7000C7D82 /* SearchNutrientsViewController.swift */,
+				86BE9536248812D1000C7D82 /* NutrientsViewController.swift */,
 				86BE953024878088000C7D82 /* RecipeStepsTableViewController.swift */,
 			);
 			path = Controller;
@@ -281,6 +284,7 @@
 				86BE952D2487800B000C7D82 /* RecipeStepsTableViewCell.swift in Sources */,
 				86BE953324878A48000C7D82 /* Step.swift in Sources */,
 				86BE952B24877136000C7D82 /* RecipeTableViewController.swift in Sources */,
+				86BE9537248812D1000C7D82 /* NutrientsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
