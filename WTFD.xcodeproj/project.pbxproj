@@ -24,6 +24,8 @@
 		86BE953124878088000C7D82 /* RecipeStepsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BE953024878088000C7D82 /* RecipeStepsTableViewController.swift */; };
 		86BE953324878A48000C7D82 /* Step.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BE953224878A48000C7D82 /* Step.swift */; };
 		86BE9537248812D1000C7D82 /* NutrientsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BE9536248812D1000C7D82 /* NutrientsViewController.swift */; };
+		86BE953D248827E7000C7D82 /* WTFD.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 86BE953B248827E7000C7D82 /* WTFD.xcdatamodeld */; };
+		86BE953F2488283E000C7D82 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BE953E2488283E000C7D82 /* DataModel.swift */; };
 		AB739F33E67BB9B06D3E19B1 /* Pods_WTFD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DBDF72A97AF266599FE3799 /* Pods_WTFD.framework */; };
 /* End PBXBuildFile section */
 
@@ -48,6 +50,8 @@
 		86BE953024878088000C7D82 /* RecipeStepsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeStepsTableViewController.swift; sourceTree = "<group>"; };
 		86BE953224878A48000C7D82 /* Step.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step.swift; sourceTree = "<group>"; };
 		86BE9536248812D1000C7D82 /* NutrientsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutrientsViewController.swift; sourceTree = "<group>"; };
+		86BE953C248827E7000C7D82 /* WTFD.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WTFD.xcdatamodel; sourceTree = "<group>"; };
+		86BE953E2488283E000C7D82 /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		AFB18C19E543155EA3A5DD4A /* Pods-WTFD.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WTFD.release.xcconfig"; path = "Target Support Files/Pods-WTFD/Pods-WTFD.release.xcconfig"; sourceTree = "<group>"; };
 		F02E37A87313E316A2264C92 /* Pods-WTFD.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WTFD.debug.xcconfig"; path = "Target Support Files/Pods-WTFD/Pods-WTFD.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -110,6 +114,8 @@
 			isa = PBXGroup;
 			children = (
 				86BE952424876E7B000C7D82 /* Recipe.swift */,
+				86BE953B248827E7000C7D82 /* WTFD.xcdatamodeld */,
+				86BE953E2488283E000C7D82 /* DataModel.swift */,
 				86BE953224878A48000C7D82 /* Step.swift */,
 				86BE952724876FD4000C7D82 /* Networking */,
 			);
@@ -275,6 +281,8 @@
 				86BE951924873BE8000C7D82 /* IngredientTableViewCell.swift in Sources */,
 				86BE9515248739A4000C7D82 /* SearchRecipeViewController.swift in Sources */,
 				86BE952324876CB4000C7D82 /* RecipeTableViewCell.swift in Sources */,
+				86BE953D248827E7000C7D82 /* WTFD.xcdatamodeld in Sources */,
+				86BE953F2488283E000C7D82 /* DataModel.swift in Sources */,
 				86BE9501248737B8000C7D82 /* AppDelegate.swift in Sources */,
 				86BE953124878088000C7D82 /* RecipeStepsTableViewController.swift in Sources */,
 				86BE952124875ACA000C7D82 /* Spoonacular.swift in Sources */,
@@ -484,6 +492,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		86BE953B248827E7000C7D82 /* WTFD.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				86BE953C248827E7000C7D82 /* WTFD.xcdatamodel */,
+			);
+			currentVersion = 86BE953C248827E7000C7D82 /* WTFD.xcdatamodel */;
+			path = WTFD.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 86BE94F5248737B8000C7D82 /* Project object */;
 }
