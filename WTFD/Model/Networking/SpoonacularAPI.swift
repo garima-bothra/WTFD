@@ -8,10 +8,11 @@
 
 import Foundation
 import Moya
+import CoreData
 
 enum SpoonacularAPI {
 
-    case findRecipesByIngredients(ingredients: [String])
+    case findRecipesByIngredients(ingredients: [Ingredient])
     case getNutritionInformation(dishName: String)
     case getRecipeInformation(id:Int)
     case getRecipesByName(dishName: String)
@@ -49,7 +50,7 @@ extension SpoonacularAPI: TargetType {
         case .findRecipesByIngredients(let ingredients):
             return .requestParameters(parameters:
                 [
-                    "ingredients": ((ingredients.map({ $0 })).joined(separator: ",+")),
+                    "ingredients": ((ingredients.map({ $0.name! })).joined(separator: ",+")),
                     "apiKey": Spoonacular.apiKey
                 ], encoding: URLEncoding.default)
         case .getNutritionInformation(let dishName):

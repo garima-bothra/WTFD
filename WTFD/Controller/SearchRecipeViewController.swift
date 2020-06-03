@@ -7,14 +7,16 @@
 //
 
 import UIKit
+import CoreData
 
 class SearchRecipeViewController: UIViewController {
 
-    var ingredients = ["apple","baking soda", "nirma"]
-
+    var ingredients = [Ingredient]()
+    var dataController: DataController!
     @IBOutlet weak var ingredientsTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(dataController)
         // Do any additional setup after loading the view.
     }
 
@@ -48,7 +50,9 @@ class SearchRecipeViewController: UIViewController {
     }
 
     func addIngredient(name: String) {
-        ingredients.append(name)
+//        var ingredient = Ingredient()
+//        ingredient.name = name
+//        ingredients.append(ingredient)
         ingredientsTableView.reloadData()
     }
 
@@ -77,7 +81,7 @@ extension SearchRecipeViewController: UITableViewDelegate, UITableViewDataSource
          //let ingredient = fetchedResultsController.object(at: indexPath)
                let cell = tableView.dequeueReusableCell(withIdentifier: "IngredientCell", for: indexPath) as! IngredientTableViewCell
                // Configure cell
-        cell.ingredientLabel.text = ingredients[indexPath.row]
+        cell.ingredientLabel.text = ingredients[indexPath.row].name
                return cell
     }
 

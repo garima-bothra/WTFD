@@ -9,11 +9,12 @@
 import UIKit
 import Moya
 import SwiftyJSON
+import CoreData
 
 class RecipeTableViewController: UITableViewController {
 
     var recipes = [Recipe]()
-    var ingredients: [String]!
+    var ingredients: [Ingredient]!
     var selecedRecipe: Int!
     var recipeByName = false
     var dishName: String!
@@ -29,7 +30,7 @@ class RecipeTableViewController: UITableViewController {
 
     func searchForRecipesByIngredients() {
            let provider = MoyaProvider<SpoonacularAPI>()
-                   provider.request(.findRecipesByIngredients(ingredients: ingredients)) {
+        provider.request(.findRecipesByIngredients(ingredients: ingredients)) {
                        switch $0 {
                        case .success(let response):
                            do {

@@ -23,7 +23,6 @@ class DataController {
 
     func configureContexts() {
         viewContext.automaticallyMergesChangesFromParent = true
-        viewContext.mergePolicy = NSMergePolicy.mergeByPropertyStoreTrump
     }
 
     //MARK: Loading the Persistent Store
@@ -54,3 +53,4 @@ extension DataController {
         }
     }
 }
+
