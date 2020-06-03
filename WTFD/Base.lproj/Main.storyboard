@@ -189,7 +189,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="hWH-xV-rAm"/>
                     <connections>
-                        <segue destination="TsN-H7-EAQ" kind="show" id="X6L-Qh-LhI"/>
+                        <segue destination="TsN-H7-EAQ" kind="show" identifier="getRecipeSteps" id="X6L-Qh-LhI"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EMo-kh-Jm9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -213,16 +213,16 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="yhW-F7-mg0" rowHeight="90" style="IBUITableViewCellStyleDefault" id="Y4T-9m-3nR" customClass="RecipeStepsTableViewCell" customModule="WTFD" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="recipeStep" rowHeight="90" id="Y4T-9m-3nR" customClass="RecipeStepsTableViewCell" customModule="WTFD" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Y4T-9m-3nR" id="XH8-HL-Bon">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="yhW-F7-mg0">
-                                                    <rect key="frame" x="20" y="0.0" width="374" height="90"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UAZ-3R-Nxv">
+                                                    <rect key="frame" x="28" y="11" width="358" height="68"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -230,16 +230,24 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="stepLabel" destination="yhW-F7-mg0" id="rav-lA-pND"/>
+                                            <outlet property="stepLabel" destination="UAZ-3R-Nxv" id="sQg-br-RNf"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="TsN-H7-EAQ" id="7Tk-xi-MfC"/>
+                                    <outlet property="delegate" destination="TsN-H7-EAQ" id="GgI-GH-Orj"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="6bH-Qv-kAH"/>
                     </view>
                     <navigationItem key="navigationItem" id="wBs-Xa-2DV"/>
+                    <connections>
+                        <outlet property="recipeImageView" destination="hdt-Pd-dWb" id="u1Q-8g-aHP"/>
+                        <outlet property="stepsTableView" destination="jeY-RP-Pkc" id="SXz-fa-wNR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YPu-lT-V9i" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

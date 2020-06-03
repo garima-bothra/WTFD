@@ -14,7 +14,7 @@ class RecipeTableViewController: UITableViewController {
 
     var recipes = [Recipe]()
     var ingredients: [String]!
-
+    var selecedRecipe: Int!
     override func viewDidLoad() {
         super.viewDidLoad()
         searchForRecipes()
@@ -71,6 +71,17 @@ class RecipeTableViewController: UITableViewController {
         return 111
     }
 
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selecedRecipe = indexPath.row
+        self.performSegue(withIdentifier: "getRecipeSteps", sender: Any.self)
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier == "getRecipeSteps"){
+            let stepsVC = segue.destination as! RecipeStepsTableViewController
+            stepsVC.recipe = recipes[selecedRecipe]
+        }
+    }
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
