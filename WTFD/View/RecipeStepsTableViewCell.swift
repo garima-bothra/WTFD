@@ -10,6 +10,8 @@ import UIKit
 
 class RecipeStepsTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var stepLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
