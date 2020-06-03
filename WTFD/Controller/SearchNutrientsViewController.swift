@@ -17,4 +17,9 @@ class SearchNutrientsViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
+
+    @IBAction func searchNutrientValueButtonPressed(_ sender: Any) {
+        self.performSegue(withIdentifier: "getNutrientData", sender: Any.self)
+    }
+
 }

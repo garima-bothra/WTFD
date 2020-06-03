@@ -41,6 +41,9 @@
                                         <state key="normal" title="Search Nutrient Value">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="searchNutrientValueButtonPressed:" destination="aAn-8f-mtC" eventType="touchUpInside" id="Eaa-OB-J9M"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -58,7 +61,7 @@
                     <navigationItem key="navigationItem" id="kvJ-IS-DJQ"/>
                     <connections>
                         <outlet property="dishNameTextField" destination="89f-gV-473" id="81e-vg-Jdn"/>
-                        <segue destination="ydU-MV-GfO" kind="presentation" id="utV-Kf-98v"/>
+                        <segue destination="ydU-MV-GfO" kind="presentation" identifier="getNutrientData" id="utV-Kf-98v"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8UM-cE-RiI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
