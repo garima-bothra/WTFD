@@ -15,12 +15,19 @@ class RecipeTableViewController: UITableViewController {
     var recipes = [Recipe]()
     var ingredients: [String]!
     var selecedRecipe: Int!
+    var recipeByName = false
+    var dishName: String!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        searchForRecipes()
+        if recipeByName {
+            searchForRecipeByName()
+        } else {
+            searchForRecipesByIngredients()
+        }
     }
 
-    func searchForRecipes() {
+    func searchForRecipesByIngredients() {
            let provider = MoyaProvider<SpoonacularAPI>()
                    provider.request(.findRecipesByIngredients(ingredients: ingredients)) {
                        switch $0 {
@@ -34,8 +41,6 @@ class RecipeTableViewController: UITableViewController {
                                // Parse each recipe's JSON
                                 self.recipes = json.arrayValue.map({ Recipe(json: $0) })
                                 self.tableView.reloadData()
-                               //self.displayRecipes(recipes: recipes)
-           //                    self.printShoppingList(recipes: recipes)
                            } catch {
                                print(error.localizedDescription)
                            }
@@ -45,6 +50,29 @@ class RecipeTableViewController: UITableViewController {
                    }
        }
 
+    func searchForRecipeByName() {
+        let provider = MoyaProvider<SpoonacularAPI>()
+        provider.request(.getRecipesByName(dishName: dishName)) {
+            switch $0 {
+            case .success(let response):
+                do {
+                    // Only allow successful HTTP codes
+                    _ = try response.filterSuccessfulStatusCodes()
+
+                    // Parse data as JSON
+                    let total = try JSON(data: response.data)
+                    let json = total["results"]
+                    // Parse each recipe's JSON
+                     self.recipes = json.arrayValue.map({ Recipe(json: $0) })
+                     self.tableView.reloadData()
+                } catch {
+                    print(error.localizedDescription)
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {

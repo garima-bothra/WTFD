@@ -33,6 +33,9 @@
                                         <state key="normal" title="Search Recipe">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="searchRecipesButtonPressed:" destination="aAn-8f-mtC" eventType="touchUpInside" id="G0Y-uu-aox"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="va6-vh-Oad">
                                         <rect key="frame" x="0.0" y="653" width="374" height="38"/>
@@ -62,6 +65,7 @@
                     <connections>
                         <outlet property="dishNameTextField" destination="89f-gV-473" id="81e-vg-Jdn"/>
                         <segue destination="ydU-MV-GfO" kind="presentation" identifier="getNutrientData" id="utV-Kf-98v"/>
+                        <segue destination="2hz-5z-cRj" kind="show" identifier="DishNameRecipes" id="Ei2-5O-PGY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8UM-cE-RiI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -132,7 +136,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HKJ-9Q-h5A" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2198.5507246376815" y="1414.9553571428571"/>
+            <point key="canvasLocation" x="2100" y="2155"/>
         </scene>
         <!--Search Recipe View Controller-->
         <scene sceneID="Ib3-Zt-5j5">
@@ -283,7 +287,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EMo-kh-Jm9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="834.78260869565224" y="2154.9107142857142"/>
+            <point key="canvasLocation" x="893" y="2155"/>
         </scene>
         <!--Recipe Steps Table View Controller-->
         <scene sceneID="gpi-TQ-qUw">
@@ -413,6 +417,9 @@
             <point key="canvasLocation" x="1431.8840579710145" y="689.73214285714278"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="Ei2-5O-PGY"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="covered-food-tray-on-a-hand-of-hotel-room-service" width="16.5" height="16.5"/>
         <image name="list (1)" width="16.5" height="16.5"/>

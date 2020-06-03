@@ -14,6 +14,7 @@ enum SpoonacularAPI {
     case findRecipesByIngredients(ingredients: [String])
     case getNutritionInformation(dishName: String)
     case getRecipeInformation(id:Int)
+    case getRecipesByName(dishName: String)
 }
 
 extension SpoonacularAPI: TargetType {
@@ -30,6 +31,8 @@ extension SpoonacularAPI: TargetType {
             return "recipes/guessNutrition"
         case .getRecipeInformation(let id):
             return "recipes/\(id)/analyzedInstructions"
+        case .getRecipesByName(_):
+        return "recipes/search"
         }
     }
 
@@ -50,7 +53,9 @@ extension SpoonacularAPI: TargetType {
                     "apiKey": Spoonacular.apiKey
                 ], encoding: URLEncoding.default)
         case .getNutritionInformation(let dishName):
-            return.requestParameters(parameters: ["apiKey": Spoonacular.apiKey, "title": dishName], encoding: URLEncoding.default)
+            return .requestParameters(parameters: ["apiKey": Spoonacular.apiKey, "title": dishName], encoding: URLEncoding.default)
+        case .getRecipesByName(let dishName):
+            return .requestParameters(parameters: ["apiKey": Spoonacular.apiKey, "query": dishName, "number": 10], encoding: URLEncoding.default)
         default:
             return .requestParameters(parameters: [ "apiKey": Spoonacular.apiKey ], encoding: URLEncoding.default)
         }
