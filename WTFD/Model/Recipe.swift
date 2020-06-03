@@ -25,8 +25,9 @@ class Recipe {
 
             // just not to cause a deadlock in UI!
         DispatchQueue.global().async {
-            guard let imageData = try? Data(contentsOf: imageURL) else { return }
-
+            guard let imageData = try? Data(contentsOf: imageURL) else {
+                self.image = #imageLiteral(resourceName: "cutlery")
+                return }
             let image = UIImage(data: imageData)
             self.image = image
         }
