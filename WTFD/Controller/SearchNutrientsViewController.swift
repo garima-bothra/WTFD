@@ -19,11 +19,15 @@ class SearchNutrientsViewController: UIViewController {
     }
     //MARK: IBActions
     @IBAction func searchRecipesButtonPressed(_ sender: Any) {
-        self.performSegue(withIdentifier: "DishNameRecipes", sender: Any.self)
+        if isCheckFieldEmpty() == false {
+            self.performSegue(withIdentifier: "DishNameRecipes", sender: Any.self)
+        }
     }
 
     @IBAction func searchNutrientValueButtonPressed(_ sender: Any) {
-        self.performSegue(withIdentifier: "getNutrientData", sender: Any.self)
+        if isCheckFieldEmpty() == false {
+            self.performSegue(withIdentifier: "getNutrientData", sender: Any.self)
+        }
     }
 
     //MARK: Passing data to next view controller
@@ -37,5 +41,16 @@ class SearchNutrientsViewController: UIViewController {
             recipesVC.recipeByName = true
             recipesVC.dishName = self.dishNameTextField.text
         }
+    }
+
+    //MARK: Check TextFiled
+    func isCheckFieldEmpty() ->Bool {
+        if(dishNameTextField.text == ""){
+            let alert = UIAlertController(title: "No dish name found", message: "Please enter the name of the dish first.", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            return true
+        }
+        return false
     }
 }
