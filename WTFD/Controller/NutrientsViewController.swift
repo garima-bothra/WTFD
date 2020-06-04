@@ -42,9 +42,15 @@ class NutrientsViewController: UIViewController {
                             self.fatLabel.text = "FAT: \(json["fat"]["value"])\(json["fat"]["unit"])"
                             self.proteinLabel.text = "PROTEIN: \(json["protein"]["value"])\(json["protein"]["unit"])"
                         } catch {
+                            let alert = UIAlertController(title: "Oops! Try again.", message: "There seems be an error with the server. Try again in a while.", preferredStyle: UIAlertController.Style.alert)
+                                               alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
+                                               self.present(alert, animated: true, completion: nil)
                             print(error.localizedDescription)
                         }
                     case .failure(let error):
+                        let alert = UIAlertController(title: "Failed to load data", message: "Please check your internet connection.", preferredStyle: UIAlertController.Style.alert)
+                        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
+                        self.present(alert, animated: true, completion: nil)
                         print(error.localizedDescription)
                     }
                 }

@@ -45,6 +45,9 @@ class RecipeTableViewController: UITableViewController {
                                print(error.localizedDescription)
                            }
                        case .failure(let error):
+                        let alert = UIAlertController(title: "Failure", message: "Please check your internet connection. Could not load your fav recipes :(", preferredStyle: UIAlertController.Style.alert)
+                        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
+                        self.present(alert, animated: true, completion: nil)
                            print(error.localizedDescription)
                        }
                    }
@@ -66,9 +69,16 @@ class RecipeTableViewController: UITableViewController {
                      self.recipes = json.arrayValue.map({ Recipe(json: $0) })
                      self.tableView.reloadData()
                 } catch {
+                    let alert = UIAlertController(title: "Oops! Try again.", message: "There seems be an error with the server. Try again in a while.", preferredStyle: UIAlertController.Style.alert)
+                    alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                    print(error.localizedDescription)
                     print(error.localizedDescription)
                 }
             case .failure(let error):
+                let alert = UIAlertController(title: "Failed to load recipes", message: "Please check your internet connection.", preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
+                self.present(alert, animated: true, completion: nil)
                 print(error.localizedDescription)
             }
         }
