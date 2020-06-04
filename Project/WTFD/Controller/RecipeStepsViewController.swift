@@ -43,36 +43,36 @@ class RecipeStepsViewController: UIViewController {
     }
     //MARK: Searching for Recipe steps
     func searchForRecipeSteps() {
-           let provider = MoyaProvider<SpoonacularAPI>()
-           provider.request(.getRecipeInformation(id: recipe.id)) {
-                       switch $0 {
-                       case .success(let response):
-                           do {
-                               // Only allow successful HTTP codes
-                               _ = try response.filterSuccessfulStatusCodes()
+        let provider = MoyaProvider<SpoonacularAPI>()
+        provider.request(.getRecipeInformation(id: recipe.id)) {
+            switch $0 {
+            case .success(let response):
+                do {
+                    // Only allow successful HTTP codes
+                    _ = try response.filterSuccessfulStatusCodes()
 
-                               // Parse data as JSON
-                               let json = try JSON(data: response.data)
-                                let recipe = json.arrayValue[0]
-                               let steps = recipe["steps"]
-                               self.steps = steps.arrayValue.map({ Step(json: $0) })
-                            self.stepsTableView.reloadData()
-                           } catch {
-                            let alert = UIAlertController(title: "Oops! Try again.", message: "There seems be an error with the server. Try again in a while.", preferredStyle: UIAlertController.Style.alert)
-                                               alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
-                                               self.present(alert, animated: true, completion: nil)
-                               print(error.localizedDescription)
-                           }
-                       case .failure(let error):
-                        let alert = UIAlertController(title: "Failed to load recipes", message: "Please check your internet connection.", preferredStyle: UIAlertController.Style.alert)
-                        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
-                        self.present(alert, animated: true, completion: nil)
-                           print(error.localizedDescription)
-                       }
-                   }
-           self.stepsTableView.reloadData()
-           self.activityView.stopAnimating()
-       }
+                    // Parse data as JSON
+                    let json = try JSON(data: response.data)
+                    let recipe = json.arrayValue[0]
+                    let steps = recipe["steps"]
+                    self.steps = steps.arrayValue.map({ Step(json: $0) })
+                    self.stepsTableView.reloadData()
+                } catch {
+                    let alert = UIAlertController(title: "Oops! Try again.", message: "There seems be an error with the server. Try again in a while.", preferredStyle: UIAlertController.Style.alert)
+                    alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                    print(error.localizedDescription)
+                }
+            case .failure(let error):
+                let alert = UIAlertController(title: "Failed to load recipes", message: "Please check your internet connection.", preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+                print(error.localizedDescription)
+            }
+        }
+        self.stepsTableView.reloadData()
+        self.activityView.stopAnimating()
+    }
 }
 
 //MARK:- TableViewDelegate and TableViewDataSource methods
@@ -82,10 +82,10 @@ extension RecipeStepsViewController: UITableViewDataSource, UITableViewDelegate 
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-               let cell = tableView.dequeueReusableCell(withIdentifier: "recipeStep", for: indexPath) as! RecipeStepsTableViewCell
-               // Configure cell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "recipeStep", for: indexPath) as! RecipeStepsTableViewCell
+        // Configure cell
         cell.stepLabel.text = "\(steps[indexPath.row].stepNo).  \(steps[indexPath.row].name)"
-               return cell
+        return cell
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

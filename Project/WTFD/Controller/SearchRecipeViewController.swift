@@ -16,24 +16,24 @@ class SearchRecipeViewController: UIViewController {
     var fetchedResultsController: NSFetchedResultsController<Ingredient>!
     //MARK: IBOutlets
     @IBOutlet weak var ingredientsTableView: UITableView!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "Ingredients"
         setupFetchedResultsController()
         // Do any additional setup after loading the view.
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setupFetchedResultsController()
     }
-
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         fetchedResultsController = nil
     }
-
+    
     //MARK: Setting up FetchedResultsController
     fileprivate func setupFetchedResultsController() {
         let fetchRequest: NSFetchRequest<Ingredient> = Ingredient.fetchRequest()
@@ -47,11 +47,11 @@ class SearchRecipeViewController: UIViewController {
         }
         fetchedResultsController.delegate = self
     }
-
+    
     //MARK: Presenting Alert to add new ingredients
     func presentNewIngredientAlert() {
         let alert = UIAlertController(title: "New Ingredient", message: "Enter a name for this ingredient", preferredStyle: .alert)
-
+        
         // Create actions
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         let saveAction = UIAlertAction(title: "Save", style: .default) { [weak self] action in
@@ -60,7 +60,7 @@ class SearchRecipeViewController: UIViewController {
             }
         }
         saveAction.isEnabled = false
-
+        
         // Add a text field
         alert.addTextField { textField in
             textField.placeholder = "Name"
@@ -72,7 +72,7 @@ class SearchRecipeViewController: UIViewController {
                 }
             }
         }
-
+        
         alert.addAction(cancelAction)
         alert.addAction(saveAction)
         present(alert, animated: true, completion: nil)
@@ -83,13 +83,13 @@ class SearchRecipeViewController: UIViewController {
         ingredient.name = name
         try? dataController.viewContext.save()
     }
-
+    
     func deleteIngredint(at indexPath: IndexPath){
         let ingredientToDelete = fetchedResultsController.object(at: indexPath)
         dataController.viewContext.delete(ingredientToDelete)
         try? dataController.viewContext.save()
     }
-
+    
     //MARK: IBActions
     @IBAction func addButtonPressed(_ sender: Any) {
         presentNewIngredientAlert()
@@ -110,7 +110,7 @@ class SearchRecipeViewController: UIViewController {
             recipeVC.ingredients = fetchedResultsController.fetchedObjects
         }
     }
-
+    
 }
 
 //MARK:- TableViewDelegate and TableViewDataSource methods
@@ -118,25 +118,25 @@ extension SearchRecipeViewController: UITableViewDelegate, UITableViewDataSource
     func numberOfSections(in tableView: UITableView) -> Int {
         return fetchedResultsController.sections?.count ?? 1
     }
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return fetchedResultsController.sections?[section].numberOfObjects ?? 0
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let ingredient = fetchedResultsController.object(at: indexPath)
         let cell = tableView.dequeueReusableCell(withIdentifier: "IngredientCell", for: indexPath) as! IngredientTableViewCell
         cell.ingredientLabel.text = ingredient.name
         return cell
     }
-
+    
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         switch editingStyle {
         case .delete: deleteIngredint(at: indexPath)
         default: ()
         }
     }
-
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let cell = tableView.cellForRow(at: indexPath) {
             cell.selectionStyle = UITableViewCell.SelectionStyle.none
@@ -146,15 +146,15 @@ extension SearchRecipeViewController: UITableViewDelegate, UITableViewDataSource
 
 //MARK: - NSFetchedResultsController Delegate Methods
 extension SearchRecipeViewController: NSFetchedResultsControllerDelegate {
-
+    
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         self.ingredientsTableView.beginUpdates()
     }
-
+    
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         self.ingredientsTableView.endUpdates()
     }
-
+    
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         switch type {
         case .insert:

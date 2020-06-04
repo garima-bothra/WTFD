@@ -13,13 +13,26 @@ import SwiftyJSON
 class SearchNutrientsViewController: UIViewController {
     //MARK: IBOutlets
     @IBOutlet weak var dishNameTextField: UITextField!
+    
+    static let shared = SearchNutrientsViewController()
+    fileprivate func setupNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         dishNameTextField.delegate = self
         self.navigationItem.title = "Dish Name"
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        setupNotifications()
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        dishNameTextField.delegate = self
+        self.navigationItem.title = "Dish Name"
+        setupNotifications()
     }
     //MARK: IBActions
     @IBAction func searchRecipesButtonPressed(_ sender: Any) {

@@ -127,6 +127,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="zcm-HM-X2I"/>
                     </view>
+                    <navigationItem key="navigationItem" id="H5a-I7-QLf"/>
                     <connections>
                         <outlet property="caloriesLabel" destination="xWF-sy-bPy" id="Ati-wM-VrS"/>
                         <outlet property="carbLabel" destination="z3C-Oz-yln" id="Bst-Ca-IUG"/>
