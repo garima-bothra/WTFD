@@ -24,7 +24,7 @@ class NutrientsViewController: UIViewController {
         searchNutrientData()
         // Do any additional setup after loading the view.
     }
-
+//MARK: Get all nutrient data
     func searchNutrientData(){
         let provider = MoyaProvider<SpoonacularAPI>()
                 provider.request(.getNutritionInformation(dishName: dishName)) {

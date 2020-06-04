@@ -289,10 +289,10 @@
             </objects>
             <point key="canvasLocation" x="893" y="2155"/>
         </scene>
-        <!--Recipe Steps Table View Controller-->
+        <!--Recipe Steps View Controller-->
         <scene sceneID="gpi-TQ-qUw">
             <objects>
-                <viewController id="TsN-H7-EAQ" customClass="RecipeStepsTableViewController" customModule="WTFD" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="TsN-H7-EAQ" customClass="RecipeStepsViewController" customModule="WTFD" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ep3-Ig-1ha">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -358,7 +358,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YPu-lT-V9i" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="390" y="2882"/>
+            <point key="canvasLocation" x="893" y="2899"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="3Vj-WA-Yeo">

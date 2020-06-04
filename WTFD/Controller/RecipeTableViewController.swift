@@ -9,10 +9,9 @@
 import UIKit
 import Moya
 import SwiftyJSON
-import CoreData
 
 class RecipeTableViewController: UITableViewController {
-
+//MARK: Variables
     var recipes = [Recipe]()
     var ingredients: [Ingredient]!
     var selecedRecipe: Int!
@@ -27,7 +26,7 @@ class RecipeTableViewController: UITableViewController {
             searchForRecipesByIngredients()
         }
     }
-
+//MARK: Search Recipe by name
     func searchForRecipesByIngredients() {
            let provider = MoyaProvider<SpoonacularAPI>()
         provider.request(.findRecipesByIngredients(ingredients: ingredients)) {
@@ -50,7 +49,7 @@ class RecipeTableViewController: UITableViewController {
                        }
                    }
        }
-
+//MARK: Search Recipe by name
     func searchForRecipeByName() {
         let provider = MoyaProvider<SpoonacularAPI>()
         provider.request(.getRecipesByName(dishName: dishName)) {
@@ -77,12 +76,10 @@ class RecipeTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return recipes.count
     }
 
@@ -91,8 +88,6 @@ class RecipeTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "recipe", for: indexPath) as! RecipeTableViewCell
         cell.recipeImage.image = recipes[indexPath.row].image
         cell.recipeNameLabel.text = recipes[indexPath.row].name
-
-
         return cell
     }
 
@@ -104,10 +99,10 @@ class RecipeTableViewController: UITableViewController {
         selecedRecipe = indexPath.row
         self.performSegue(withIdentifier: "getRecipeSteps", sender: Any.self)
     }
-
+//MARK: Pass data to next view controller
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "getRecipeSteps"){
-            let stepsVC = segue.destination as! RecipeStepsTableViewController
+            let stepsVC = segue.destination as! RecipeStepsViewController
             stepsVC.recipe = recipes[selecedRecipe]
         }
     }

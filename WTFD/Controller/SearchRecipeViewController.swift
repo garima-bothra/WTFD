@@ -10,13 +10,13 @@ import UIKit
 import CoreData
 
 class SearchRecipeViewController: UIViewController {
-
+    //MARK: Variables
     var ingredients = [Ingredient]()
     var dataController: DataController!
-
     var fetchedResultsController: NSFetchedResultsController<Ingredient>!
-
+    //MARK: IBOutlets
     @IBOutlet weak var ingredientsTableView: UITableView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupFetchedResultsController()
@@ -32,6 +32,8 @@ class SearchRecipeViewController: UIViewController {
         super.viewWillDisappear(animated)
         fetchedResultsController = nil
     }
+
+    //MARK: Setting up FetchedResultsController
     fileprivate func setupFetchedResultsController() {
         let fetchRequest: NSFetchRequest<Ingredient> = Ingredient.fetchRequest()
         let sortDescriptor = NSSortDescriptor(key: "name", ascending: false)
@@ -45,6 +47,7 @@ class SearchRecipeViewController: UIViewController {
         fetchedResultsController.delegate = self
     }
 
+    //MARK: Presenting Alert to add new ingredients
     func presentNewIngredientAlert() {
         let alert = UIAlertController(title: "New Ingredient", message: "Enter a name for this ingredient", preferredStyle: .alert)
 
@@ -73,7 +76,7 @@ class SearchRecipeViewController: UIViewController {
         alert.addAction(saveAction)
         present(alert, animated: true, completion: nil)
     }
-
+    //MARK: Adding and removing ingredients
     func addIngredient(name: String) {
         let ingredient = Ingredient(context: dataController.viewContext)
         ingredient.name = name
@@ -86,13 +89,14 @@ class SearchRecipeViewController: UIViewController {
         try? dataController.viewContext.save()
     }
 
+    //MARK: IBActions
     @IBAction func addButtonPressed(_ sender: Any) {
         presentNewIngredientAlert()
     }
     @IBAction func searchRecipeButtonPressed(_ sender: Any) {
         self.performSegue(withIdentifier: "goToRecipe", sender: Any.self)
     }
-
+    //MARK: Prepare for segue to pass data
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "goToRecipe"){
             let recipeVC = segue.destination as! RecipeTableViewController
@@ -102,6 +106,7 @@ class SearchRecipeViewController: UIViewController {
 
 }
 
+//MARK:- TableViewDelegate and TableViewDataSource methods
 extension SearchRecipeViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return fetchedResultsController.sections?.count ?? 1
@@ -114,7 +119,6 @@ extension SearchRecipeViewController: UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
          let ingredient = fetchedResultsController.object(at: indexPath)
         let cell = tableView.dequeueReusableCell(withIdentifier: "IngredientCell", for: indexPath) as! IngredientTableViewCell
-               // Configure cell
         cell.ingredientLabel.text = ingredient.name
                return cell
     }
@@ -123,6 +127,12 @@ extension SearchRecipeViewController: UITableViewDelegate, UITableViewDataSource
         switch editingStyle {
         case .delete: deleteIngredint(at: indexPath)
         default: ()
+        }
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let cell = tableView.cellForRow(at: indexPath) {
+            cell.selectionStyle = UITableViewCell.SelectionStyle.none
         }
     }
 }

@@ -10,11 +10,15 @@ import UIKit
 import Moya
 import SwiftyJSON
 
-class RecipeStepsTableViewController: UIViewController {
+class RecipeStepsViewController: UIViewController {
+
+    //MARK: Variables
     var recipe: Recipe!
     var steps = [Step]()
+    //MARK: IBOutlets
     @IBOutlet weak var recipeImageView: UIImageView!
     @IBOutlet weak var stepsTableView: UITableView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         stepsTableView.delegate = self
@@ -23,7 +27,7 @@ class RecipeStepsTableViewController: UIViewController {
         searchForRecipeSteps()
         self.stepsTableView.reloadData()
     }
-
+    //MARK: Searching for Recipe steps
     func searchForRecipeSteps() {
            let provider = MoyaProvider<SpoonacularAPI>()
            provider.request(.getRecipeInformation(id: recipe.id)) {
@@ -50,7 +54,8 @@ class RecipeStepsTableViewController: UIViewController {
        }
 }
 
-extension RecipeStepsTableViewController: UITableViewDataSource, UITableViewDelegate {
+//MARK:- TableViewDelegate and TableViewDataSource methods
+extension RecipeStepsViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.steps.count
     }

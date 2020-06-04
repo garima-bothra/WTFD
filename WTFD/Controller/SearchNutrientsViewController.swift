@@ -11,12 +11,13 @@ import Moya
 import SwiftyJSON
 
 class SearchNutrientsViewController: UIViewController {
-
+//MARK: IBOutlets
     @IBOutlet weak var dishNameTextField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
+    //MARK: IBActions
     @IBAction func searchRecipesButtonPressed(_ sender: Any) {
         self.performSegue(withIdentifier: "DishNameRecipes", sender: Any.self)
     }
@@ -25,6 +26,7 @@ class SearchNutrientsViewController: UIViewController {
         self.performSegue(withIdentifier: "getNutrientData", sender: Any.self)
     }
 
+    //MARK: Passing data to next view controller
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "getNutrientData"){
             let nutri = segue.destination as! NutrientsViewController

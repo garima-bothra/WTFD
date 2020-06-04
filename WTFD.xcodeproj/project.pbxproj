@@ -21,7 +21,7 @@
 		86BE952524876E7B000C7D82 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BE952424876E7B000C7D82 /* Recipe.swift */; };
 		86BE952B24877136000C7D82 /* RecipeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BE952A24877136000C7D82 /* RecipeTableViewController.swift */; };
 		86BE952D2487800B000C7D82 /* RecipeStepsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BE952C2487800B000C7D82 /* RecipeStepsTableViewCell.swift */; };
-		86BE953124878088000C7D82 /* RecipeStepsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BE953024878088000C7D82 /* RecipeStepsTableViewController.swift */; };
+		86BE953124878088000C7D82 /* RecipeStepsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BE953024878088000C7D82 /* RecipeStepsViewController.swift */; };
 		86BE953324878A48000C7D82 /* Step.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BE953224878A48000C7D82 /* Step.swift */; };
 		86BE9537248812D1000C7D82 /* NutrientsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BE9536248812D1000C7D82 /* NutrientsViewController.swift */; };
 		86BE953D248827E7000C7D82 /* WTFD.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 86BE953B248827E7000C7D82 /* WTFD.xcdatamodeld */; };
@@ -47,7 +47,7 @@
 		86BE952424876E7B000C7D82 /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 		86BE952A24877136000C7D82 /* RecipeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeTableViewController.swift; sourceTree = "<group>"; };
 		86BE952C2487800B000C7D82 /* RecipeStepsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeStepsTableViewCell.swift; sourceTree = "<group>"; };
-		86BE953024878088000C7D82 /* RecipeStepsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeStepsTableViewController.swift; sourceTree = "<group>"; };
+		86BE953024878088000C7D82 /* RecipeStepsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeStepsViewController.swift; sourceTree = "<group>"; };
 		86BE953224878A48000C7D82 /* Step.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step.swift; sourceTree = "<group>"; };
 		86BE9536248812D1000C7D82 /* NutrientsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutrientsViewController.swift; sourceTree = "<group>"; };
 		86BE953C248827E7000C7D82 /* WTFD.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WTFD.xcdatamodel; sourceTree = "<group>"; };
@@ -76,6 +76,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		863B0BF42488737D00F6919A /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				86BE9500248737B8000C7D82 /* AppDelegate.swift */,
+				86BE9502248737B8000C7D82 /* SceneDelegate.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
 		86BE94F4248737B8000C7D82 = {
 			isa = PBXGroup;
 			children = (
@@ -97,8 +106,7 @@
 		86BE94FF248737B8000C7D82 /* WTFD */ = {
 			isa = PBXGroup;
 			children = (
-				86BE9500248737B8000C7D82 /* AppDelegate.swift */,
-				86BE9502248737B8000C7D82 /* SceneDelegate.swift */,
+				863B0BF42488737D00F6919A /* Helper */,
 				86BE9529248770CC000C7D82 /* Controller */,
 				86BE952824877004000C7D82 /* View */,
 				86BE952624876FC7000C7D82 /* Model */,
@@ -148,7 +156,7 @@
 				86BE952A24877136000C7D82 /* RecipeTableViewController.swift */,
 				86BE9516248739B7000C7D82 /* SearchNutrientsViewController.swift */,
 				86BE9536248812D1000C7D82 /* NutrientsViewController.swift */,
-				86BE953024878088000C7D82 /* RecipeStepsTableViewController.swift */,
+				86BE953024878088000C7D82 /* RecipeStepsViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -284,7 +292,7 @@
 				86BE953D248827E7000C7D82 /* WTFD.xcdatamodeld in Sources */,
 				86BE953F2488283E000C7D82 /* DataModel.swift in Sources */,
 				86BE9501248737B8000C7D82 /* AppDelegate.swift in Sources */,
-				86BE953124878088000C7D82 /* RecipeStepsTableViewController.swift in Sources */,
+				86BE953124878088000C7D82 /* RecipeStepsViewController.swift in Sources */,
 				86BE952124875ACA000C7D82 /* Spoonacular.swift in Sources */,
 				86BE9503248737B8000C7D82 /* SceneDelegate.swift in Sources */,
 				86BE9517248739B8000C7D82 /* SearchNutrientsViewController.swift in Sources */,

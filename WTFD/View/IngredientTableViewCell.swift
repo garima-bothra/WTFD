@@ -9,8 +9,9 @@
 import UIKit
 
 class IngredientTableViewCell: UITableViewCell {
-
+    //MARK: IBOutlets
     @IBOutlet weak var ingredientLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -18,7 +19,7 @@ class IngredientTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        self.selectionStyle = .none
         // Configure the view for the selected state
     }
 
