@@ -26,6 +26,7 @@ class RecipeTableViewController: UITableViewController {
         } else {
             searchForRecipesByIngredients()
         }
+        tableView.reloadData()
     }
 //MARK: Search Recipe by name
     func searchForRecipesByIngredients() {
