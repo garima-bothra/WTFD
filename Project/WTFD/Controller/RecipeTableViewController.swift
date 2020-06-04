@@ -19,8 +19,7 @@ class RecipeTableViewController: UITableViewController {
     var recipeByName = false
     var dishName: String!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    fileprivate func initialSetup() {
         self.navigationItem.title = "Recipes"
         activityView.center = self.view.center
         activityView.startAnimating()
@@ -31,6 +30,16 @@ class RecipeTableViewController: UITableViewController {
             searchForRecipesByIngredients()
         }
         tableView.reloadData()
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        initialSetup()
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        initialSetup()
     }
 //MARK: Search Recipe by name
     func searchForRecipesByIngredients() {

@@ -20,8 +20,7 @@ class RecipeStepsViewController: UIViewController {
     @IBOutlet weak var recipeImageView: UIImageView!
     @IBOutlet weak var stepsTableView: UITableView!
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    fileprivate func initialSetup() {
         self.navigationItem.title = "\(recipe.name)"
         stepsTableView.delegate = self
         stepsTableView.dataSource = self
@@ -31,6 +30,16 @@ class RecipeStepsViewController: UIViewController {
         self.view.addSubview(activityView)
         searchForRecipeSteps()
         self.stepsTableView.reloadData()
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        initialSetup()
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        initialSetup()
     }
     //MARK: Searching for Recipe steps
     func searchForRecipeSteps() {

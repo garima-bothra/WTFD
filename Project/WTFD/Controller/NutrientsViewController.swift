@@ -20,14 +20,23 @@ class NutrientsViewController: UIViewController {
     @IBOutlet weak var fatLabel: UILabel!
     @IBOutlet weak var proteinLabel: UILabel!
 
-    override func viewDidLoad() {
+    fileprivate func initialSetup() {
         super.viewDidLoad()
         navigationItem.title = ""
         activityView.center = self.view.center
         activityView.startAnimating()
         self.view.addSubview(activityView)
         searchNutrientData()
+    }
+
+    override func viewDidLoad() {
+        initialSetup()
         // Do any additional setup after loading the view.
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        initialSetup()
     }
 //MARK: Get all nutrient data
     func searchNutrientData(){
