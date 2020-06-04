@@ -96,7 +96,7 @@ class SearchRecipeViewController: UIViewController {
     }
     @IBAction func searchRecipeButtonPressed(_ sender: Any) {
         if self.ingredientsTableView.numberOfRows(inSection: 0) > 0 {
-        self.performSegue(withIdentifier: "goToRecipe", sender: Any.self)
+            self.performSegue(withIdentifier: "goToRecipe", sender: Any.self)
         } else {
             let alert = UIAlertController(title: "No ingredients found", message: "Please enter ingredients first.", preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
@@ -124,10 +124,10 @@ extension SearchRecipeViewController: UITableViewDelegate, UITableViewDataSource
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-         let ingredient = fetchedResultsController.object(at: indexPath)
+        let ingredient = fetchedResultsController.object(at: indexPath)
         let cell = tableView.dequeueReusableCell(withIdentifier: "IngredientCell", for: indexPath) as! IngredientTableViewCell
         cell.ingredientLabel.text = ingredient.name
-               return cell
+        return cell
     }
 
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {

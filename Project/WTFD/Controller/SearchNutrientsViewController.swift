@@ -11,11 +11,14 @@ import Moya
 import SwiftyJSON
 
 class SearchNutrientsViewController: UIViewController {
-//MARK: IBOutlets
+    //MARK: IBOutlets
     @IBOutlet weak var dishNameTextField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
+        dishNameTextField.delegate = self
         self.navigationItem.title = "Dish Name"
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         // Do any additional setup after loading the view.
     }
     //MARK: IBActions
@@ -26,8 +29,16 @@ class SearchNutrientsViewController: UIViewController {
     }
 
     @IBAction func searchNutrientValueButtonPressed(_ sender: Any) {
-        if isCheckFieldEmpty() == false {
+        if !isCheckFieldEmpty() {
             self.performSegue(withIdentifier: "getNutrientData", sender: Any.self)
+        }
+    }
+
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0 {
+                self.view.frame.origin.y -= keyboardSize.height
+            }
         }
     }
 
@@ -53,5 +64,20 @@ class SearchNutrientsViewController: UIViewController {
             return true
         }
         return false
+    }
+}
+
+extension SearchNutrientsViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+
+
+
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if self.view.frame.origin.y != 0 {
+            self.view.frame.origin.y = 0
+        }
     }
 }
