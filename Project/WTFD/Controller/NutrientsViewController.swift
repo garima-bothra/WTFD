@@ -12,6 +12,7 @@ import SwiftyJSON
 
 class NutrientsViewController: UIViewController {
 
+    let activityView = UIActivityIndicatorView(style: .large)
     var dishName: String!
 
     @IBOutlet weak var caloriesLabel: UILabel!
@@ -22,6 +23,9 @@ class NutrientsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = ""
+        activityView.center = self.view.center
+        activityView.startAnimating()
+        self.view.addSubview(activityView)
         searchNutrientData()
         // Do any additional setup after loading the view.
     }
@@ -55,6 +59,7 @@ class NutrientsViewController: UIViewController {
                         print(error.localizedDescription)
                     }
                 }
+        self.activityView.stopAnimating()
     }
 
 }

@@ -13,6 +13,7 @@ import SwiftyJSON
 class RecipeStepsViewController: UIViewController {
 
     //MARK: Variables
+    let activityView = UIActivityIndicatorView(style: .large)
     var recipe: Recipe!
     var steps = [Step]()
     //MARK: IBOutlets
@@ -25,6 +26,9 @@ class RecipeStepsViewController: UIViewController {
         stepsTableView.delegate = self
         stepsTableView.dataSource = self
         recipeImageView.image = recipe.image
+        activityView.center = self.view.center
+        activityView.startAnimating()
+        self.view.addSubview(activityView)
         searchForRecipeSteps()
         self.stepsTableView.reloadData()
     }
@@ -58,6 +62,7 @@ class RecipeStepsViewController: UIViewController {
                        }
                    }
            self.stepsTableView.reloadData()
+           self.activityView.stopAnimating()
        }
 }
 

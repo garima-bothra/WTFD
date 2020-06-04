@@ -12,6 +12,7 @@ import SwiftyJSON
 
 class RecipeTableViewController: UITableViewController {
 //MARK: Variables
+    let activityView = UIActivityIndicatorView(style: .large)
     var recipes = [Recipe]()
     var ingredients: [Ingredient]!
     var selecedRecipe: Int!
@@ -21,6 +22,9 @@ class RecipeTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "Recipes"
+        activityView.center = self.view.center
+        activityView.startAnimating()
+        self.view.addSubview(activityView)
         if recipeByName {
             searchForRecipeByName()
         } else {
@@ -52,6 +56,7 @@ class RecipeTableViewController: UITableViewController {
                         self.present(alert, animated: true, completion: nil)
                            print(error.localizedDescription)
                        }
+            self.activityView.stopAnimating()
                    }
        }
 //MARK: Search Recipe by name
@@ -84,6 +89,7 @@ class RecipeTableViewController: UITableViewController {
                 print(error.localizedDescription)
             }
         }
+        self.activityView.stopAnimating()
     }
     // MARK: - Table view data source
 
