@@ -24,6 +24,7 @@ You can also search for recipes and the nutrient values of a dish based on it's 
  * CoreData
  
  ## App Screenshots ##
+ <img src="Screenshots/LaunchScreen.png" alt="Ingredients List" height="600"/>
  <img src="Screenshots/ingredientList.png" alt="Ingredients List" height="600"/>
  <img src="Screenshots/searchByDish.png" alt="Enter Dish Name" height="600"/>
  <img src="Screenshots/Recipes.png" alt="Recipe" height="600"/>
