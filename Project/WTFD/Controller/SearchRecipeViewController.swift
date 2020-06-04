@@ -95,7 +95,13 @@ class SearchRecipeViewController: UIViewController {
         presentNewIngredientAlert()
     }
     @IBAction func searchRecipeButtonPressed(_ sender: Any) {
+        if self.ingredientsTableView.numberOfRows(inSection: 0) > 0 {
         self.performSegue(withIdentifier: "goToRecipe", sender: Any.self)
+        } else {
+            let alert = UIAlertController(title: "No ingredients found", message: "Please enter ingredients first.", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
     }
     //MARK: Prepare for segue to pass data
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
