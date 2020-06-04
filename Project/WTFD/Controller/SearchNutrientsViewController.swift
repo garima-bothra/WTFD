@@ -27,26 +27,26 @@ class SearchNutrientsViewController: UIViewController {
             self.performSegue(withIdentifier: "DishNameRecipes", sender: Any.self)
         }
     }
-
+    
     @IBAction func searchNutrientValueButtonPressed(_ sender: Any) {
         if !isCheckFieldEmpty() {
             self.performSegue(withIdentifier: "getNutrientData", sender: Any.self)
         }
     }
-
+    
     //MARK: Passing data to next view controller
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "getNutrientData"){
             let nutri = segue.destination as! NutrientsViewController
             nutri.dishName = self.dishNameTextField.text
         }
-        if(segue.identifier == "DishNameRecipes") {
+        if segue.identifier == "DishNameRecipes" {
             let recipesVC = segue.destination as! RecipeTableViewController
             recipesVC.recipeByName = true
             recipesVC.dishName = self.dishNameTextField.text
         }
     }
-
+    
     //MARK: Check TextFiled
     func isCheckFieldEmpty() ->Bool {
         if(dishNameTextField.text == ""){
@@ -64,7 +64,7 @@ extension SearchNutrientsViewController: UITextFieldDelegate {
         textField.resignFirstResponder()
         return true
     }
-
+    
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             if self.view.frame.origin.y == 0 {
@@ -72,7 +72,7 @@ extension SearchNutrientsViewController: UITextFieldDelegate {
             }
         }
     }
-
+    
     @objc func keyboardWillHide(notification: NSNotification) {
         if self.view.frame.origin.y != 0 {
             self.view.frame.origin.y = 0
