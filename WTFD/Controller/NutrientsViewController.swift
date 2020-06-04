@@ -21,6 +21,7 @@ class NutrientsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.title = ""
         searchNutrientData()
         // Do any additional setup after loading the view.
     }

@@ -21,6 +21,7 @@ class RecipeStepsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.title = "\(recipe.name)"
         stepsTableView.delegate = self
         stepsTableView.dataSource = self
         recipeImageView.image = recipe.image
@@ -39,7 +40,7 @@ class RecipeStepsViewController: UIViewController {
 
                                // Parse data as JSON
                                let json = try JSON(data: response.data)
-                               let recipe = json.arrayValue[0]
+                                let recipe = json.arrayValue[0]
                                let steps = recipe["steps"]
                                self.steps = steps.arrayValue.map({ Step(json: $0) })
                             self.stepsTableView.reloadData()

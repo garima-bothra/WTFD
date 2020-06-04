@@ -20,6 +20,7 @@ class RecipeTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.title = "Recipes"
         if recipeByName {
             searchForRecipeByName()
         } else {

@@ -19,6 +19,7 @@ class SearchRecipeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.title = "Ingredients"
         setupFetchedResultsController()
         // Do any additional setup after loading the view.
     }
