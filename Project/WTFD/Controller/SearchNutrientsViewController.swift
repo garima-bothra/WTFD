@@ -34,14 +34,6 @@ class SearchNutrientsViewController: UIViewController {
         }
     }
 
-    @objc func keyboardWillShow(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            if self.view.frame.origin.y == 0 {
-                self.view.frame.origin.y -= keyboardSize.height
-            }
-        }
-    }
-
     //MARK: Passing data to next view controller
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "getNutrientData"){
@@ -73,7 +65,13 @@ extension SearchNutrientsViewController: UITextFieldDelegate {
         return true
     }
 
-
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0 {
+                self.view.frame.origin.y -= keyboardSize.height
+            }
+        }
+    }
 
     @objc func keyboardWillHide(notification: NSNotification) {
         if self.view.frame.origin.y != 0 {
