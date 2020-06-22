@@ -24,7 +24,7 @@ You can also search for recipes and the nutrient values of a dish based on it's 
  * Press `Ctrl + R` to run the app. 📲
  * Do star this repo and/or contribute if you like it.🙂
  
- ## How to use ##
+ ## How to use  ##
  * After the launchscreen, you will be taken to the TabBarController where you will have two options - search for recipes from a list of ingredients or search recipes(or check nutritional value) by dish name.
  * In the first tab add and deleting ingredients from the list (ingredients you have at home). 
  * Search for recipes by using the search button at the bottom of the view.
@@ -34,7 +34,7 @@ You can also search for recipes and the nutrient values of a dish based on it's 
  * When searching for recipe, click on the recipe to check it out. 
  * Make your favourite recipes with the steps mentioned. 🍽
  
- ## Libraries used in the project ##
+ ## Libraries used in the project 📥 ##
  * UIKit
  * CoreData
  * Moya
@@ -50,18 +50,18 @@ You can also search for recipes and the nutrient values of a dish based on it's 
  <img src="Screenshots/nutritionValue.png" alt="nutrition value" height="300"/>
  </p>
 
- ## License ##
+ ## License ⚖️ ##
  Please read the [LICENSE](../master/LICENSE) file for details.
  
- ## Author ##
+ ## Author 👩‍💻 ##
  [Garima Bothra](https://github.com/garima94921)
  
- ## How to Contribute ##
+ ## How to Contribute 🖋 ##
  * Run the app - Steps are mentioned above.
  * If you face issues in any step open a new issue.
  * To fix issues: Fork this repository, make your changes and make a Pull Request.
 
-## Credits ##
+## Credits  ##
 
 This app uses [Spoonacular API](https://spoonacular.com/food-api) for all food searches.
  
